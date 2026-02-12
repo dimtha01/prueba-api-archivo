@@ -29,11 +29,15 @@ app.post('/upload', (req, res) => {
     });
 
     writeStream.on('finish', () => {
+      const protocol = req.protocol;
+      const host = req.get('host');
+      const url = `${protocol}://${host}/${filename}`;
+
       res.json({
         success: true,
         file: {
           filename,
-          path: saveTo,
+          path: url,
           size: writeStream.bytesWritten
         }
       });
