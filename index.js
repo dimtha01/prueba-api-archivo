@@ -6,7 +6,8 @@ import Busboy from 'busboy';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
-const uploadDir = join(__dirname, 'uploads');
+// En desarrollo usa carpeta local, en producción usa variable de entorno
+const uploadDir = process.env.UPLOAD_DIR || join(__dirname, 'uploads');
 mkdirSync(uploadDir, { recursive: true });
 app.use(express.static(uploadDir));
 
