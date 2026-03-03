@@ -11,7 +11,7 @@ const uploadDir = process.env.UPLOAD_DIR || join(__dirname, 'uploads');
 mkdirSync(uploadDir, { recursive: true });
 app.use(express.static(uploadDir));
 
-//hola jeje
+//hola
 app.post('/upload', (req, res) => {
   const busboy = Busboy({ headers: req.headers });
 
